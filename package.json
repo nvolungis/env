@@ -1,0 +1,14 @@
+{
+	"name": "env",
+	"version": "0.0.1",
+	"description": "testing some node stuff out",
+	"dependencies": {
+		"socket.io": "~0.9.6",
+		"mime": "~1.2.7",
+    "express":"3.x",
+    "underscore":"1.5.2",
+    "connect-assets":"",
+    "jade":"*",
+    "nib":"*"
+	}
+}
