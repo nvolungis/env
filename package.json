@@ -9,6 +9,7 @@
     "underscore":"1.5.2",
     "connect-assets":"",
     "jade":"*",
-    "nib":"*"
+    "nib":"*",
+    "universal-jst":"*"
 	}
 }

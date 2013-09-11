@@ -3,6 +3,11 @@ var app             = express();
 var server          = require('http').createServer(app);
 var io              = require('socket.io').listen(server);
 var assets          = require('connect-assets')();
+var engines         = require('universal-jst');
+
+engines.underscore('/assets', function(err, data){
+  console.log(err, data);
+});
 
 server.listen(8888);
 
@@ -10,6 +15,10 @@ app.get('/', function (req, res) {
   res.render('index',{ 
     title : 'Home' 
   });
+});
+
+app.get('/i', function(req, res) {
+  res.sendfile(__dirname + '/index.html');
 });
 
 app.set('views', __dirname + '/views')
