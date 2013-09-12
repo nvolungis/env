@@ -1,4 +1,5 @@
-
+//= require templates
+//= require lib/jquery
 //= require lib/underscore
 //= require lib/backbone
 //= require lib/marionette
@@ -6,6 +7,7 @@
 //= require lib/hammer
 //= require_tree backbone/config
 //= require backbone/app
+//= require_tree backbone/controllers
 //= require_tree backbone/entities
 //= require_tree backbone/views
 //= require_tree backbone/apps

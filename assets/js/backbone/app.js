@@ -22,7 +22,19 @@
       }
     });
 
+    App.reqres.setHandler('default:region', function(){
+	   	return App.main_region;
+    });
+    
+    App.commands.setHandler('register:instance', function(instance, id){
+	    if (App.environment === 'development') App.register(instance, id);
+    });
+    
+    App.commands.setHandler('unregister:instance', function(instance, id){
+	    if (App.environment === 'development') App.unregister(instance, id);
+    });
+
     return App;
 
   })(Backbone, Marionette);
-}).call(this);//
+}).call(this);

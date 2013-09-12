@@ -3,17 +3,22 @@ var app             = express();
 var server          = require('http').createServer(app);
 var io              = require('socket.io').listen(server);
 var assets          = require('connect-assets')();
-var engines         = require('universal-jst');
+var fs              = require('fs');
+var JST             = require('universal-jst');
 
-engines.underscore('/assets', function(err, data){
-  console.log(err, data);
+JST.underscore('./assets/js/', function(err, array_data){
+  var file_data = array_data.join('\n');
+
+  fs.writeFile('./assets/js/templates.js', file_data, function(err) {
+    if(err) {console.log(err);}
+  }); 
 });
 
 server.listen(8888);
 
 app.get('/', function (req, res) {
   res.render('index',{ 
-    title : 'Home' 
+    title : 'home' 
   });
 });
 

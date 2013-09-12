@@ -4,7 +4,15 @@ html
     title #{title}
     != css('main')
     != js('application')
+
+    script(type='text/javascript').
+      (function(){
+        $(document).ready(function(){
+          Display.start();
+        });
+      }());
+      
   body
     header(id='header-region')
     block content
-    footer(id='#footer-region')
+    footer(id='footer-region')

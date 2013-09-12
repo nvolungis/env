@@ -1,17 +1,15 @@
-Display.moduele('HeaderApp', function(HeaderApp, App, Backbone, Marionette, _, $){
+Display.module('HeaderApp', function(HeaderApp, App, Backbone, Marionette, _, $){
   this.startWithParent = false;
 
   var API = {
-    layoutHeader: function(){
-      HeaderApp.Show.Controller.layoutHeader();
+    start: function(){
+      new HeaderApp.Show.Controller({
+        region: App.header_region
+      });
     }
   };
 
-
-  App.on('start', function(){
-    API.layoutHeader();
+  this.on('start', function(){
+    API.start();
   });
-}):
-
-
-
+});
