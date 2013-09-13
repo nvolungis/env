@@ -1,7 +1,7 @@
 Display.module('Entities', function(Entities, App, Backbone, Marionette, $, _){
 
   Entities.Application = Backbone.Model.extend({});
-  
+
   var API = {
     set: function(obj){
       var app = App.request('cache', 'application', function(){
@@ -20,7 +20,7 @@ Display.module('Entities', function(Entities, App, Backbone, Marionette, $, _){
     },
 
     get_all: function(){
-     return  App.request('cache', 'application', function(){
+      return App.request('cache', 'application', function(){
         return new Entities.Application();
       });
     }

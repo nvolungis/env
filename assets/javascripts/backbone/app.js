@@ -9,6 +9,15 @@
       main_region: '#main-region',
       panel_region: '#panel-region'
     });
+    
+    App.on('flash', function(){
+      console.log('onflash');
+      $('body').css({background:'#cccccc'});
+      setTimeout(function(){
+        $('body').css({background:'#fff'});
+      }, 100);
+    });
+
 
     App.addInitializer(function(){
       App.module('HeaderApp').start();
@@ -21,7 +30,7 @@
 
     App.on('initialize:after',function(){
       if(Backbone.history){
-        Backbone.history.start(); //{pushState:true}
+        Backbone.history.start({pushState:true});
 
         if(this.getCurrentRoute() === '') this.navigate(this.root, {trigger:true});
       }
