@@ -3,7 +3,7 @@ Display.module('FlashApp.ManagerApp', function(ManagerApp, App, Backbone, Marion
 
   ManagerApp.Router = Marionette.AppRouter.extend({
     appRoutes: {
-      'controller': 'start'
+      'manager': 'start'
     }
   });
 

@@ -2,9 +2,9 @@ Display.module('Entities.Displays', function(Displays, App, Backbone, Marionette
   Displays.Display = Backbone.Model.extend({});
 
   Displays.Displays = Backbone.Collection.extend({
-    model: Displays.Display
+    model: Displays.Display,
+    url: '/displays'
   });
-
 
   var API = {
     get_displays: function(){
@@ -16,17 +16,23 @@ Display.module('Entities.Displays', function(Displays, App, Backbone, Marionette
     set_displays: function(list){
       var displays = this.get_displays();
       displays.set(list);
+    },
+
+    fetch_displays: function(){
+      var displays = this.get_displays();
+      displays.fetch();
+
+      return displays;
     }
   };
 
   App.reqres.setHandler('displays', function(){
-    return API.get_displays();
+    return API.fetch_displays();
   });
-  
+
   App.commands.setHandler('set:displays', function(list){
     API.set_displays(list);
   });
-
 
   App.on('displays:changed', function(data){
     App.execute('set:displays', data.displays);

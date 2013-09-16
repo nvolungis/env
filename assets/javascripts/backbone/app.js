@@ -9,7 +9,7 @@
       main_region: '#main-region',
       panel_region: '#panel-region'
     });
-    
+
     App.on('flash', function(){
       console.log('onflash');
       $('body').css({background:'#cccccc'});
@@ -18,9 +18,8 @@
       }, 100);
     });
 
-
     App.addInitializer(function(){
-      App.module('HeaderApp').start();
+     // App.module('HeaderApp').start();
       App.module('WebsocketsApp').start();
     });
 
@@ -39,11 +38,11 @@
     App.reqres.setHandler('default:region', function(){
 	   	return App.main_region;
     });
-    
+
     App.commands.setHandler('register:instance', function(instance, id){
 	    if (App.environment === 'development') App.register(instance, id);
     });
-    
+
     App.commands.setHandler('unregister:instance', function(instance, id){
 	    if (App.environment === 'development') App.unregister(instance, id);
     });

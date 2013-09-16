@@ -4,6 +4,7 @@
 	"description": "testing some node stuff out",
 	"dependencies": {
 		"socket.io": "~0.9.6",
+    "socket.io-wildcard":"*",
 		"mime": "~1.2.7",
     "express":"3.x",
     "underscore":"1.5.2",

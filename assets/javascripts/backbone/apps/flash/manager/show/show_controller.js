@@ -1,13 +1,18 @@
 Display.module('FlashApp.ManagerApp.Show', function(Show, App, Backbone, Marionette, $, _){
   Show.Controller = App.Controllers.Base.extend({
     initialize: function(options){
-      this.layout = this.getLayout();
+      var that = this;
+      this.display_list = App.request('displays');
 
-      this.listenTo(this.layout, 'show', function(){
-        this.displays();
-      });
+      App.execute('when:fetched', [this.display_list], function(){
+        that.layout = that.getLayout();
 
-      this.show(this.layout);
+        that.listenTo(that.layout, 'show', function(){
+          that.displays();
+        });
+
+        that.show(that.layout);
+     });
     },
 
     getLayout: function(){
@@ -15,8 +20,7 @@ Display.module('FlashApp.ManagerApp.Show', function(Show, App, Backbone, Marione
     },
 
     displays: function(){
-      var displays = App.request('displays'),
-          view = this.getDisplaysView(displays);
+      var view = this.getDisplaysView(this.display_list);
 
       this.listenTo(view,'itemview:clicked', function(args){
         var event = {
@@ -27,13 +31,14 @@ Display.module('FlashApp.ManagerApp.Show', function(Show, App, Backbone, Marione
 
         App.execute('web:socket:send', event);
       });
+
       this.layout.display_region.show(view);
     },
 
     getDisplaysView: function(displays){
       return new Show.Displays({
         collection: displays
-       });
+      });
     }
   });
 });

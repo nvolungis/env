@@ -1,4 +1,12 @@
 extend layout
 block content
+  script(type='text/javascript').
+    (function(){
+      $(document).ready(function(){
+        Display.start({
+          type:'display'
+        });
+      });
+    }());
   div(id='main-region')
 
