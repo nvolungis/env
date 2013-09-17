@@ -10,6 +10,10 @@ Display.module('WebsocketsApp',function(WebsocketsApp, App, Backbone, Marionette
 
     send_event: function(data){
       if(this.event_handler) this.event_handler.send(data);
+    },
+
+    send_display_attrs: function(data){
+      if(this.event_handler) this.event_handler.send_display_attrs(data);
     }
   };
 
@@ -26,7 +30,7 @@ Display.module('WebsocketsApp',function(WebsocketsApp, App, Backbone, Marionette
     API.send_event(data);
   });
 
-  App.commands.setHanldler('web:socket:send:display:attrs', function(data){
+  App.commands.setHandler('web:socket:send:display:attrs', function(data){
     API.send_display_attrs(data);
   });
 

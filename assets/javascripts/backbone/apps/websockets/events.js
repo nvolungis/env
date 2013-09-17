@@ -18,7 +18,7 @@ Display.module('WebsocketsApp',function(WebsocketsApp, App, Backbone, Marionette
       this.socket.emit('event:from:client', data);
     },
 
-    send_dispay_attrs: function(data){
+    send_display_attrs: function(data){
       console.log('persist on display');
     }
   });
