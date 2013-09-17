@@ -39,6 +39,10 @@ Display.module('FlashApp.ManagerApp.Show', function(Show, App, Backbone, Marione
       return new Show.Displays({
         collection: displays
       });
+    },
+
+    flash: function(id){
+      App.execute('display:flash', id);
     }
   });
 });

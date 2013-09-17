@@ -6,21 +6,9 @@ Display.module('FlashApp.ManagerApp.Show', function(Show, App, Backbone, Marione
     }
   });
 
-  Show.Display = Marionette.ItemView.extend({
-    template: 'flash/manager/show/templates/display',
-    tagName: 'li',
-    triggers:{
-      'click' : 'clicked'
-    }
-  });
+  Show.Display = App.Views.Display.extend({});
 
-  Show.Displays = Marionette.CompositeView.extend({
-    template: 'flash/manager/show/templates/displays',
-    itemView: Show.Display,
-    itemViewContainer: '.displays-list',
-
-    collectionEvents: {
-      'change': 'render'
-    }
+  Show.Displays = App.Views.Displays.extend({
+    itemView: Show.Display
   });
 });

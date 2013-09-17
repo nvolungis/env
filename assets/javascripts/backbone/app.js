@@ -11,7 +11,6 @@
     });
 
     App.on('flash', function(){
-      console.log('onflash');
       $('body').css({background:'#cccccc'});
       setTimeout(function(){
         $('body').css({background:'#fff'});
@@ -19,8 +18,8 @@
     });
 
     App.addInitializer(function(){
-     // App.module('HeaderApp').start();
       App.module('WebsocketsApp').start();
+      App.module('Attributes').start();
     });
 
     App.on('initialize:before', function(options){

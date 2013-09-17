@@ -11,6 +11,7 @@ Display.module('WebsocketsApp',function(WebsocketsApp, App, Backbone, Marionette
     connect: function(){
       clearInterval(this.interval);
       var type = App.request('app:attr', 'type');
+      console.log('type', type);
       this.socket = io.connect('http://192.168.0.42' + '/' + type);
       WebsocketsApp.trigger('connected', this.socket);
     }

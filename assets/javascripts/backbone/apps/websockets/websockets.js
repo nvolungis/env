@@ -5,11 +5,11 @@ Display.module('WebsocketsApp',function(WebsocketsApp, App, Backbone, Marionette
     },
 
     events: function(socket){
-      this.events = new WebsocketsApp.Events(socket);
+      this.event_handler = new WebsocketsApp.Events(socket);
     },
 
     send_event: function(data){
-      if(this.events) this.events.send(data);
+      if(this.event_handler) this.event_handler.send(data);
     }
   };
 
@@ -19,10 +19,15 @@ Display.module('WebsocketsApp',function(WebsocketsApp, App, Backbone, Marionette
 
   WebsocketsApp.on('connected', function(socket){
     API.events(socket);
+    App.trigger('web:socket:connected', socket);
   });
 
   App.commands.setHandler('web:socket:send', function(data){
     API.send_event(data);
+  });
+
+  App.commands.setHanldler('web:socket:send:display:attrs', function(data){
+    API.send_display_attrs(data);
   });
 
 });

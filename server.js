@@ -7,7 +7,7 @@ var JST             = require('universal-jst');
 var display_manager = require('./lib/display_manager');
 var assets          = require('connect-assets')();
 var server_port = 8888;
-var server_ip = '192.168.0.48';
+var server_ip = '192.168.0.42';
 
 server.listen(server_port);
 js.root = 'javascripts';

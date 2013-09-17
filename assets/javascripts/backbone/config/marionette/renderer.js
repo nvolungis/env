@@ -1,13 +1,12 @@
 Backbone.Marionette.Renderer.render = function(template, data){
-  var path = JST["backbone/apps/" + template];  
-  
-  try{
-    if(!template) throw({message: "Template '" + template + "' not found!"}); 
-    return path(data);
-  }
-  
-  catch(err){
-    console.log(template);
-    console.log(err.message);
-  }
+  if(template === false) return; 
+
+  var lookups = ["backbone/apps/", "backbone/views/"];
+
+  for(var i in lookups){
+    var path = JST[lookups[i] + template]; 
+
+    if(path) return path(data)
+  };
 }
+

@@ -9,7 +9,11 @@ Display.module('FlashApp.ManagerApp', function(ManagerApp, App, Backbone, Marion
 
   var API = {
     start: function(){
-      new ManagerApp.Show.Controller();
+      this.manager_app = new ManagerApp.Show.Controller();
+    },
+
+    flash: function(id){
+      this.manager_app.flash(id);
     }
   };
 
@@ -18,4 +22,9 @@ Display.module('FlashApp.ManagerApp', function(ManagerApp, App, Backbone, Marion
       controller: API
     });
   });
+
+  App.on('display:clicked', function(data, id){
+    API.flash(id);
+  });
+
 });
